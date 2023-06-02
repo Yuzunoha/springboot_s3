@@ -7,3 +7,26 @@ services:
       - 4566:4566
     environment:
       - SERVICES=S3,lambda
+    networks:
+      - network1
+
+  producer:
+    tty: true
+    volumes:
+      - ./:/mount
+    build:
+      context: .
+    networks:
+      - network1
+    ports:
+      - 8080:8080
+
+volumes:
+  localstack:
+    name: localstack-volumes
+    driver: local
+
+networks:
+  network1:
+    name: network1
+    external: true
