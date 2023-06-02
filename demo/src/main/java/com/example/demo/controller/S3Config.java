@@ -24,6 +24,7 @@ public class S3Config {
         .standard()
         .withEndpointConfiguration(new EndpointConfiguration(endpoint, s3ClientRegion))
         .withCredentials(new AWSStaticCredentialsProvider(credentials))
+        .withPathStyleAccessEnabled(true)
         .build();
   }
 }

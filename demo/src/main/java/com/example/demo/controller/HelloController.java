@@ -24,6 +24,9 @@ public class HelloController {
   }
 
   private void s3test2() {
+    var ret = s3Client.listObjects("test-bucket");
+    System.out.println(ret.getBucketName());
+
     ListObjectsV2Result result = s3Client.listObjectsV2("test-bucket");
     List<S3ObjectSummary> objects = result.getObjectSummaries();
     for (S3ObjectSummary os : objects) {
